@@ -1,6 +1,24 @@
 <!doctype html>
 <html>
 <head>
+	<script type="text/javascript" src="jso-master/dist/jso.js"></script>
+	<script>
+		var config = {
+			client_id: "c6351bf1ec32f93010b1d38ceeaea6e138d8e7d2",
+			token: "https://launchpad.37signals.com/authorization/token",
+			// redirect_uri: "http://gilberk1.github.io/BC3/success.html"
+		};
+
+		var j = new jso.JSO(config);
+
+		var opts = {
+			response_type: 'code',
+			client_secret: "de2b736120821d2ac3436b0f1a46f635fc4236b9",
+			token: "https://launchpad.37signals.com/authorization/token"
+		};
+
+		j.getToken(opts);
+	</script>
 </head>
 <body>
 <p>Success!</p>
