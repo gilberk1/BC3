@@ -8,8 +8,10 @@
 				return true;
 		})[0].split('=')[1];
 
-		var request = new XMLHttpRequest();
-    	request.open("GET", "https://launchpad.37signals.com/authorization.json", true);
+		var request = createCORSRequest("GET", "https://launchpad.37signals.com/authorization.json");
+
+		// var request = new XMLHttpRequest();
+  //   	request.open("GET", "https://launchpad.37signals.com/authorization.json", true);
     	request.setRequestHeader('Authorization', 'Bearer ' + token );
     	request.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     	// request.setRequestHeader('User-Agent', 'Basecamp 3 App (kgilbertson@1seo.com)');
