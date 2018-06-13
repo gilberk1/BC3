@@ -8,7 +8,11 @@
 				return true;
 		})[0].split('=')[1];
 
-		console.log(token);
+		var request = new XMLHttpRequest();
+    	request.setRequestHeader('Authorization', 'Bearer ' + token );
+
+    	console.log(request);
+
 	</script>
 </head>
 <body>
