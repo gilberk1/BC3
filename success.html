@@ -10,10 +10,13 @@
 
 		var request = new XMLHttpRequest();
     	request.open("GET", "https://3.basecamp.com/3823897/projects.json", true);
+
+    	request.onreadystatechange = handler;
+
     	
-    	request.setRequestHeader('Access-Control-Allow-Origin', '*');
+    	// request.setRequestHeader('Access-Control-Allow-Origin', '*');
     	request.setRequestHeader('Authorization', 'Bearer ' + token );
-    	request.setRequestHeader('Content-Type', 'text/plain');
+    	// request.setRequestHeader('Content-Type', 'text/plain');
 
 		request.send();
 
