@@ -9,11 +9,11 @@
 		})[0].split('=')[1];
 
 		var request = new XMLHttpRequest();
-    	request.open("GET", "https://launchpad.37signals.com/authorization.json", true);
+    	request.open("GET", "https://3.basecamp.com/3823897/projects.json", true);
     	request.setRequestHeader('Authorization', 'Bearer ' + token );
+    	request.setRequestHeader('Content-TYpe', 'applciation/json')
+    	request.setRequestHeader('User-Agent: BC3 App (kgilbertson@1seo.com')
 		request.send();
-
-    	console.log(request);
 
 	</script>
 </head>
