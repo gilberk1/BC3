@@ -10,7 +10,8 @@
 
 		var request = new XMLHttpRequest();
     	request.open("GET", "https://launchpad.37signals.com/authorization.json", true);
-
+    	
+    	request.setRequestHeader('Access-Control-Allow-Origin', '*');
     	request.setRequestHeader('Authorization', 'Bearer ' + token );
     	request.setRequestHeader('Content-Type', 'text/plain');
 
