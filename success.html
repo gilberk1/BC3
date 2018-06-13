@@ -9,7 +9,9 @@
 		})[0].split('=')[1];
 
 		var request = new XMLHttpRequest();
+    	request.open("GET", "https://launchpad.37signals.com/authorization.json", true);
     	request.setRequestHeader('Authorization', 'Bearer ' + token );
+		request.send();
 
     	console.log(request);
 
