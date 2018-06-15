@@ -23,25 +23,23 @@
   //       });
 
   		function jsonp(url) {
-        	let script = document.createElement('script')
+        	var script = document.createElement('script')
+
         	const name = "_jsonp_" + Math.round(100000 * Math.random());
         	//url formatting
         	if (url.match(/\?/))
         		url += "&callback="+name
         	else
         		url += "?callback="+name
-
-        	console.log(script);
         	
         	script.src = url;
-
-        	console.log(script);
 
         	window[name] = function(data) {
  	           document.body.removeChild(script);
     	       delete window[name];
         	}
-        	console.log(script);
+        	script.type = 'text/javascript';
+
         	document.body.appendChild(script);
 		}
 		var data = jsonp("https://3.basecamp.com/3823897/projects.json");
