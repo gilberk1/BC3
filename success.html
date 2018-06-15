@@ -11,7 +11,7 @@
 
 		$.ajax({
          type:"GET",
-         url:"https://3.basecamp.com/3823897/projects.jsondata?callback=?",
+         url:"https://3.basecamp.com/3823897/projects.json?callback=?",
          dataType:"jsonp",
          contentType: "application/json; charset=utf-8",
          headers: {
@@ -19,7 +19,7 @@
          },
          success:function(response)
          {
-            $("#data").html("Data:" + response.data);
+            $("#data").html("Data:" + response);
          },
          error: function (e, r, h) {
             alert(h.message);
