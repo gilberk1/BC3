@@ -11,11 +11,11 @@
 		})[0].split('=')[1];
 
 		$.ajax({
-         url:"https://3.basecamp.com/3823897/projects.json?callback=bcData",
+         url:"https://3.basecamp.com/3823897/projects.json?",
          type:"GET",
          dataType:"jsonp",
-         // jsonpCallback: 'bcData',
-         // jsonp: 'callback',
+         jsonpCallback: 'bcData',
+         jsonp: 'callback',
          beforeSend: function(request) {
     		request.setRequestHeader('Authorization', 'Bearer ' + token);
     		request.setRequestHeader('Content-Type', 'application/json ');
