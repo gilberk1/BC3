@@ -9,21 +9,20 @@
 				return true;
 		})[0].split('=')[1];
 
+		function showData(data, status) {
+			$("#data").html("Data:" + data);
+		}
+
 		$.ajax({
          type:"GET",
-         url:"https://3.basecamp.com/3823897/projects.json?callback=?",
+         url:"https://3.basecamp.com/3823897/projects.json",
          dataType:"jsonp",
          contentType: "application/json; charset=utf-8",
          headers: {
          	"Authorization": "Bearer " + token
          },
-         success:function(response)
-         {
-            $("#data").html("Data:" + response);
-         },
-         error: function (e, r, h) {
-            alert(h.message);
-         }
+         jsonp: false,
+         jsonpCallback: showData
         });
 
 	</script>
