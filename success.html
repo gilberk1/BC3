@@ -35,10 +35,7 @@
         	
 	    	script.src = url;
 
-	    	$("body").append(script);
-
-
-        		// document.body.appendChild(script);
+        	document.body.appendChild(script);
   		}
 		var data = jsonp("https://3.basecamp.com/3823897/projects.json");
 		data.then((res) => {
