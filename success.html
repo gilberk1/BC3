@@ -25,7 +25,9 @@
   		function jsonp(url) {
   			return new Promise(function(resolve, reject) {
 
-        		let script = document.createElement('script')
+  				var script;
+
+        		// let script = document.createElement('script')
 
 	        	const name = "_jsonp_" + Math.round(100000 * Math.random());
     	    	//url formatting
@@ -34,7 +36,9 @@
         		else
         			url += "?callback="+name
         	
-	        	script.src = url;
+	        	// script.src = url;
+
+	        	script = "<script src = '" + url + "'><\/script>";
 
     	    	window[name] = function(data) {
         		   resolve(data);
