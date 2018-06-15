@@ -9,10 +9,6 @@
 				return true;
 		})[0].split('=')[1];
 
-		function showData(data, status) {
-			$("#data").html("Data:" + data);
-		}
-
 		$.ajax({
          type:"GET",
          url:"https://3.basecamp.com/3823897/projects.json?callback=?",
@@ -21,8 +17,10 @@
          headers: {
          	"Authorization": "Bearer " + token
          },
-         jsonp: false,
-         jsonpCallback: showData
+         jsonp: false;
+         jsonpCallback: function (data) {
+			$("#data").html("Data:" + data);
+		 }
         });
 
 	</script>
