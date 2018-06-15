@@ -9,18 +9,35 @@
 				return true;
 		})[0].split('=')[1];
 
-		$.ajax({
-         type:"GET",
-         url:"https://3.basecamp.com/3823897/projects.json",
-         dataType:"json",
-         contentType: "application/json; charset=utf-8",
-         headers: {
-         	"Authorization": "Bearer " + token
-         },
-         success: function (data) {
-			$("#data").html("Data:" + data);
-		 }
-        });
+		// $.ajax({
+  //        type:"GET",
+  //        url:"https://3.basecamp.com/3823897/projects.json",
+  //        dataType:"json",
+  //        contentType: "application/json; charset=utf-8",
+  //        headers: {
+  //        	"Authorization": "Bearer " + token
+  //        },
+  //        success: function (data) {
+		// 	$("#data").html("Data:" + data);
+		//  }
+  //       });
+
+  		function jsonp(url, callback) {
+    		var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
+    		window[callbackName] = function(data) {
+        		delete window[callbackName];
+        		document.body.removeChild(script);
+        		callback(data);
+    		};
+
+    		var script = document.createElement('script');
+    		script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
+    		document.body.appendChild(script);
+		}
+
+		jsonp('https://3.basecamp.com/3823897/projects.json', function(data) {
+   			console.log(data);
+		});
 
 	</script>
 </head>
