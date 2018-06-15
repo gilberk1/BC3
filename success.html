@@ -23,31 +23,22 @@
   //       });
 
   		function jsonp(url) {
-  			return new Promise(function(resolve, reject) {
 
-  				var script;
+        	let script = document.createElement('script')
 
-        		// let script = document.createElement('script')
-
-	        	const name = "_jsonp_" + Math.round(100000 * Math.random());
-    	    	//url formatting
-        		if (url.match(/\?/))
-        			url += "&callback="+name
-        		else
-        			url += "?callback="+name
+	       	const name = "_jsonp_" + Math.round(100000 * Math.random());
+    	   	//url formatting
+       		if (url.match(/\?/))
+       			url += "&callback="+name
+        	else
+    			url += "?callback="+name
         	
-	        	// script.src = url;
+	    	script.src = url;
 
-	        	script = "<script src = '" + url + "'><\/script>";
+	    	$("body").append(script);
 
-    	    	window[name] = function(data) {
-        		   resolve(data);
- 	        	   document.body.removeChild(script);
-    	       		delete window[name];
-        		}
-        	
-        		document.body.appendChild(script);
-			});
+
+        		// document.body.appendChild(script);
   		}
 		var data = jsonp("https://3.basecamp.com/3823897/projects.json");
 		data.then((res) => {
