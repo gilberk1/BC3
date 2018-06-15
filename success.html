@@ -10,23 +10,25 @@
 		})[0].split('=')[1];
 
 		$.ajax({
-         url:"https://3.basecamp.com/3823897/projects.json?",
          type:"GET",
+         url:"https://3.basecamp.com/3823897/projects.jsondata?callback=?",
          dataType:"jsonp",
-         beforeSend: function(request) {
-    		request.setRequestHeader('Authorization', 'Bearer ' + token);
-    		request.setRequestHeader('Content-Type', 'application/javascript ');
-  		 },
-         success:function(data)
+         contentType: "application/json; charset=utf-8",
+         headers: {
+         	"Authorization": "Bearer " + token
+         },
+         success:function(response)
          {
-            console.log(data);
+            $("#data").html("Data:" + response.data);
+         },
+         error: function (e, r, h) {
+            alert(h.message);
          }
-
         });
 
 	</script>
 </head>
 <body>
-<p>Success!</p>
+<p id = "data"></p>
 </body>
 </html>
