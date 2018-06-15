@@ -11,21 +11,27 @@
 		})[0].split('=')[1];
 
 		$.ajax({
-         url:"https://3.basecamp.com/3823897/projects.json?callback=?",
+         url:"https://3.basecamp.com/3823897/projects.json?callback=bcData",
          type:"GET",
          dataType:"jsonp",
+         jsonpCallback: 'bcData',
+         jsonp: 'callback',
          beforeSend: function(request) {
     		request.setRequestHeader('Authorization', 'Bearer ' + token);
   		 },
-         success:function(data)
-         {
-            alert(data);
-         },
-         error:function(jqXHR,textStatus,errorThrown)
-         {
-            alert("You can not send Cross Domain AJAX requests: "+errorThrown);
-         }
+         // success:function(data)
+         // {
+         //    console.log(data);
+         // },
+         // error:function(jqXHR,textStatus,errorThrown)
+         // {
+         //    console.log("You can not send Cross Domain AJAX requests: "+errorThrown);
+         // }
         });
+
+        function bcData (data) {
+        	console.log(data);
+        }
 
 	</script>
 </head>
