@@ -22,21 +22,26 @@
 		//  }
   //       });
 
-  		function jsonp(url, callback) {
-    		var callbackName = 'jsonp_callback_' + Math.round(100000 * Math.random());
-    		window[callbackName] = function(data) {
-        		delete window[callbackName];
-        		document.body.removeChild(script);
-        		callback(data);
-    		};
+  		function jsonp(url) {
+        	let script = document.createElement('script')
+        	const name = "_jsonp_" + Math.round(100000 * Math.random());
+        	//url formatting
+        	if (url.match(/\?/))
+        		url += "&callback="+name
+        	else
+        		url += "?callback="+name
+        	
+        	script.src = url;
 
-    		var script = document.createElement('script');
-    		script.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'callback=' + callbackName;
-    		document.body.appendChild(script);
+        	window[name] = function(data) {
+ 	           document.body.removeChild(script);
+    	       delete window[name];
+        	}
+        	document.body.appendChild(script);
 		}
-
-		jsonp('https://3.basecamp.com/3823897/projects.json', function(data) {
-   			console.log(data);
+		var data = jsonp("https://3.basecamp.com/3823897/projects.json");
+		data.then((res) => {
+    		console.log(res);
 		});
 
 	</script>
