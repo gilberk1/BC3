@@ -30,13 +30,18 @@
         		url += "&callback="+name
         	else
         		url += "?callback="+name
+
+        	console.log(script);
         	
         	script.src = url;
+
+        	console.log(script);
 
         	window[name] = function(data) {
  	           document.body.removeChild(script);
     	       delete window[name];
         	}
+        	console.log(script);
         	document.body.appendChild(script);
 		}
 		var data = jsonp("https://3.basecamp.com/3823897/projects.json");
