@@ -11,14 +11,13 @@
 
 		$.ajax({
          type:"GET",
-         url:"https://3.basecamp.com/3823897/projects.json?callback=?",
-         dataType:"jsonp",
+         url:"https://3.basecamp.com/3823897/projects.json",
+         dataType:"json",
          contentType: "application/json; charset=utf-8",
          headers: {
          	"Authorization": "Bearer " + token
          },
-         jsonp: false,
-         jsonpCallback: function (data) {
+         success: function (data) {
 			$("#data").html("Data:" + data);
 		 }
         });
